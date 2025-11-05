@@ -28,13 +28,9 @@ class DetectBlue:
         """
         Private constructor, use create() method.
         """
-        assert (
-            class_create_private_key is DetectBlue.__create_key
-        ), "Use create() method"
+        assert class_create_private_key is DetectBlue.__create_key, "Use create() method"
 
-    def run(
-        self, image: str, output_path: Path, return_mask: bool = False
-    ) -> None | np.ndarray:
+    def run(self, image: str, output_path: Path, return_mask: bool = False) -> None | np.ndarray:
         """
         Detects blue from an image and shows the annotated result.
 
@@ -69,9 +65,7 @@ class DetectBlue:
         # ============
 
         # Annotate the colour detections
-        contours, _ = cv2.findContours(
-            mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
-        )
+        contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         cv2.drawContours(img, contours, -1, (0, 255, 0), 2)
 
         # Show the annotated detection!
@@ -106,9 +100,7 @@ class DetectRed:
         """
         assert class_create_private_key is DetectRed.__create_key, "Use create() method"
 
-    def run(
-        self, image: str, output_path: Path, return_mask: bool = False
-    ) -> None | np.ndarray:
+    def run(self, image: str, output_path: Path, return_mask: bool = False) -> None | np.ndarray:
         """
         Detects red from an image and shows the annotated result.
 
@@ -145,9 +137,7 @@ class DetectRed:
 
         # Annotate the colour detections
         # replace the '_' parameter with the appropiate variable
-        contours, _ = cv2.findContours(
-            mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE
-        )
+        contours, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         # ============
         # ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
         # ============

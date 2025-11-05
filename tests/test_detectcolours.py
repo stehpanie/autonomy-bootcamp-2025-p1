@@ -18,9 +18,7 @@ GROUND_TRUTH_RED_PATH = [
     pathlib.Path(TEST_PATH, "ground_truth_maps", f"mask_detections_red_{i}.jpg")
     for i in range(1, 4)
 ]
-TEST_MAPS_PATH = [
-    pathlib.Path(TEST_PATH, "test_maps", f"maps_{i}.jpg") for i in range(1, 4)
-]
+TEST_MAPS_PATH = [pathlib.Path(TEST_PATH, "test_maps", f"maps_{i}.jpg") for i in range(1, 4)]
 
 IOU_THRESHOLD = 0.8
 
@@ -34,9 +32,7 @@ def compute_iou(written_mask: np.ndarray, expected_mask: np.ndarray) -> float:
     return intersection / union if union > 0 else 0.0
 
 
-@pytest.mark.parametrize(
-    "map_path, gt_path", zip(TEST_MAPS_PATH, GROUND_TRUTH_BLUE_PATH)
-)
+@pytest.mark.parametrize("map_path, gt_path", zip(TEST_MAPS_PATH, GROUND_TRUTH_BLUE_PATH))
 def test_blue_coverage(
     map_path: pathlib.Path, gt_path: pathlib.Path, tmp_path: pathlib.Path
 ) -> None:
@@ -52,9 +48,7 @@ def test_blue_coverage(
     assert iou >= IOU_THRESHOLD, f"Blue detection is too low. IoU: {iou: .2f}"
 
 
-@pytest.mark.parametrize(
-    "map_path, gt_path", zip(TEST_MAPS_PATH, GROUND_TRUTH_RED_PATH)
-)
+@pytest.mark.parametrize("map_path, gt_path", zip(TEST_MAPS_PATH, GROUND_TRUTH_RED_PATH))
 def test_red_coverage(
     map_path: pathlib.Path, gt_path: pathlib.Path, tmp_path: pathlib.Path
 ) -> None:
